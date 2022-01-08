@@ -8,13 +8,6 @@ struct node {
 
 struct node *top = NULL;
 
-struct node *initList(struct node *top){
-    top = malloc(sizeof(struct node));
-    top->data = NULL;
-    top->link = NULL;
-    return top;
-};
-
 void push(int data){
     if(top == NULL){
         top = malloc(sizeof(struct node));
