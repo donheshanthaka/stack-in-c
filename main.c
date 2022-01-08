@@ -1,51 +1,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 101
+struct node {
+    int data;
+    struct node *link;
+};
 
-int a[MAX_SIZE];
-int top = -1;
+struct node *top = NULL;
 
-void push(int x){
-    if(top == MAX_SIZE - 1){
-        printf("Error: stack overflow\n");
-        return;
+struct node *initList(struct node *top){
+    top = malloc(sizeof(struct node));
+    top->data = NULL;
+    top->link = NULL;
+    return top;
+};
+
+void push(int data){
+    if(top == NULL){
+        top = malloc(sizeof(struct node));
+        top->data = data;
+        top->link = NULL;
+    }else{
+        struct node *newNode = malloc(sizeof(struct node));
+        newNode->data = data;
+        newNode->link = top;
+        top = newNode;
     }
-    top++;
-    a[top] = x;
-
 }
 
 void pop(){
-    if (pop == -1){
+    if (top == NULL){
         printf("Error: The stack is empty!\n");
-        return;
+    }else{
+        struct node *deleteNode = top;
+        top = top->link;
+        free(deleteNode);
+        deleteNode = NULL;
     }
-    a[top] = NULL;
-    top--;
 }
 
-int returnTop(){
-    return a[top];
+struct node *returnTop(){
+    return top;
 }
 
 void print(){
-    int i;
-    printf("\nStack: ");
-    for (i = 0; i <= top; i++){
-        printf("%d -> ", a[i]);
+    struct node *temp = top;
+    printf("\n");
+    while(temp != NULL){
+        printf(" <- %d", temp->data);
+        temp = temp->link;
     }
     printf("\n");
 }
 
-int IsEmpty()
-{
-    if(top == -1) return 1;
-    return 0;
-}
 
 int main()
 {
+
+    pop();
+
     push(1);
     push(2);
     push(3);
@@ -55,7 +68,7 @@ int main()
 
     print();
 
-    printf("\nTop: %d\n", returnTop());
+    printf("\nTop: %d\n", returnTop()->data);
 
     pop();
 
