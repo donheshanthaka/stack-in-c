@@ -13,6 +13,7 @@ void push(int x){
     }
     top++;
     a[top] = x;
+
 }
 
 void pop(){
@@ -20,35 +21,45 @@ void pop(){
         printf("Error: The stack is empty!\n");
         return;
     }
-    a[top] == NULL;
+    a[top] = NULL;
     top--;
 }
 
-int top(){
+int returnTop(){
     return a[top];
 }
 
 void print(){
     int i;
     printf("\nStack: ");
-    for (i = 0; i < top; i++){
-        printf("%d ->", a[i]);
+    for (i = 0; i <= top; i++){
+        printf("%d -> ", a[i]);
     }
     printf("\n");
 }
 
+int IsEmpty()
+{
+    if(top == -1) return 1;
+    return 0;
+}
+
 int main()
 {
-    push(1)
-    push(2)
-    push(3)
-    push(4)
-    push(5)
-    push(6)
+    push(1);
+    push(2);
+    push(3);
+    push(4);
+    push(5);
+    push(6);
 
-    //print("\nTop: %d", top());
+    print();
+
+    printf("\nTop: %d\n", returnTop());
 
     pop();
+
+    push(7);
 
     print();
 
