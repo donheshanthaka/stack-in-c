@@ -17,7 +17,7 @@ void push(int x){
 }
 
 void pop(){
-    if (pop == -1){
+    if (top == -1){
         printf("Error: The stack is empty!\n");
         return;
     }
@@ -46,6 +46,8 @@ int IsEmpty()
 
 int main()
 {
+    pop();
+
     push(1);
     push(2);
     push(3);
